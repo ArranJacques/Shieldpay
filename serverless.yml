@@ -1,0 +1,20 @@
+service: sheildpay
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ${opt:region, 'eu-west-2'}
+  stage: ${opt:stage, 'development'}
+  profile: ${env:IAM_PROFILE}
+  deploymentBucket:
+    name: aj--shieldpay-test
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-webpack
+  - serverless-offline
+functions:
+  api--sms--post:
+    handler: src/service/api/sms--post.main
+    events:
+      - http:
+          path: sms
+          method: post
