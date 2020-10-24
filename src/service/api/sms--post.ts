@@ -2,7 +2,7 @@ import { APIGatewayProxyEvent } from 'aws-lambda';
 import controller from 'domain/api/controller';
 import { getBody } from 'domain/api/request';
 import * as response from 'domain/api/response';
-import publishSms from 'domain/sms/sms-manager';
+import { publishSms } from 'domain/sms/sms-manager';
 import validate from 'validate';
 
 type RequestBody = {
