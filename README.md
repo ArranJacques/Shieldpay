@@ -11,3 +11,11 @@
 ```bash
 npm run test
 ```
+
+## Call Api
+
+```bash
+curl -X POST -H "Content-Type: application/json" \
+    -d '{"phoneNumber": "+447xxxxxxxxxx", "message": "test message sent from curl"}' \
+    http://localhost:3003/sms
+```
