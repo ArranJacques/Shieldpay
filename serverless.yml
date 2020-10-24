@@ -18,3 +18,9 @@ functions:
       - http:
           path: sms
           method: post
+resources:
+  Resources:
+    ShieldpaySmsTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ShieldpaySmsTopic
