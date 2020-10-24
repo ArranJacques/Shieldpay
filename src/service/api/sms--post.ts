@@ -12,8 +12,11 @@ type RequestBody = {
 export const main = controller(async (event: APIGatewayProxyEvent) => {
 
   const payload = await validate<RequestBody>(getBody(event), {
-    phoneNumber: ['required'],
-    message: ['required']
+    phoneNumber: ['required', 'phoneNumber'],
+    message: ['required', 'max:160']
+  }, {
+    'phoneNumber.phoneNumber': 'invalid phone number',
+    'message.max': 'max 160 characters',
   });
 
   return response.success(payload);
