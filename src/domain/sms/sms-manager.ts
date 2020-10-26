@@ -7,6 +7,10 @@ const SNS = new AWS.SNS({
 });
 
 export async function publishSms(phoneNumber: string, message: string) {
+
+  // TODO: think about sanitizing message. Do we really just want to blindly send
+  //  whatever the user enters?
+
   await SNS.publish({
     Message: JSON.stringify({ phoneNumber, message }),
     TargetArn: AWS_SNS_TOPIC_ARN
